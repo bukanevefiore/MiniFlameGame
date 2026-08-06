@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 
 class EndlessRunnerGame extends FlameGame {
   @override
-  Color backgroundColor() {
-    return const Color(0xFF111111);
+  Color backgroundColor() => const Color(0xFF111111);
+
+  @override
+  Future<void> onLoad() async {
+    await super.onLoad();
   }
 }
