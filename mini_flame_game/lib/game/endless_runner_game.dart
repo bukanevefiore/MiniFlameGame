@@ -18,6 +18,8 @@ class EndlessRunnerGame extends FlameGame //{
   Future<void> onLoad() async {
     await super.onLoad();
 
+    pauseEngine();
+
     final gameWorld = GameWorld();
 
     world = gameWorld;
@@ -30,4 +32,19 @@ class EndlessRunnerGame extends FlameGame //{
 
     camera.viewfinder.position = GameConfig.resolution / 2;
   }
+
+  void restartGame() {
+    overlays.remove('GameOver');
+
+    isGameOver = false;
+    score = 0;
+
+    pauseEngine();
+    resumeEngine();
+
+    world.removeAll(world.children);
+
+    world.add(GameWorld());
+  }
+
 }
