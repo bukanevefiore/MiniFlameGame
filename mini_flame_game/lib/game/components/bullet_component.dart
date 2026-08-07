@@ -1,7 +1,14 @@
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 
-class BulletComponent extends RectangleComponent {
+import 'package:flame/collisions.dart';
+
+import '../endless_runner_game.dart';
+import 'enemy_component.dart';
+
+class BulletComponent extends RectangleComponent //{
+    with CollisionCallbacks, HasGameReference<EndlessRunnerGame> {
+
   BulletComponent({
     required Vector2 position,
   }) : super(
@@ -21,4 +28,29 @@ class BulletComponent extends RectangleComponent {
       removeFromParent();
     }
   }
+
+  @override
+  Future<void> onLoad() async {
+    await super.onLoad();
+
+    add(RectangleHitbox());
+  }
+
+  @override
+  void onCollisionStart(
+      Set<Vector2> intersectionPoints,
+      PositionComponent other,
+      ) {
+    super.onCollisionStart(intersectionPoints, other);
+
+    if (other is EnemyComponent) {
+      other.removeFromParent();
+      removeFromParent();
+
+      game.score++;
+
+      debugPrint("Score: ${game.score}");
+    }
+  }
+
 }

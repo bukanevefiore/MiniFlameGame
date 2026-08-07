@@ -23,12 +23,16 @@ class EnemyComponent extends RectangleComponent //{
     super.update(dt);
 
     position.y += 200 * dt;
-
+/*
     if (position.y > 700) {
       game.score++;
 
       print("Score: ${game.score}");
 
+      removeFromParent();
+    } */
+
+    if (position.y > 700) {
       removeFromParent();
     }
   }
