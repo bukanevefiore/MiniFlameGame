@@ -9,6 +9,7 @@ class EndlessRunnerGame extends FlameGame //{
     with HasCollisionDetection {
 
   bool isGameOver = false;
+  int score = 0;
 
   @override
   Color backgroundColor() => const Color(0xFF000000);

@@ -2,8 +2,12 @@ import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/collisions.dart';
 
+import '../endless_runner_game.dart';
+
 class EnemyComponent extends RectangleComponent //{
-    with CollisionCallbacks {
+    with CollisionCallbacks, //{
+        HasGameReference<EndlessRunnerGame> {
+
 
   EnemyComponent({
     required Vector2 position,
@@ -19,6 +23,14 @@ class EnemyComponent extends RectangleComponent //{
     super.update(dt);
 
     position.y += 200 * dt;
+
+    if (position.y > 700) {
+      game.score++;
+
+      print("Score: ${game.score}");
+
+      removeFromParent();
+    }
   }
 
   @override
