@@ -9,7 +9,10 @@ import '../endless_runner_game.dart';
 
 class PlayerComponent extends //SpriteComponent //{
                               RectangleComponent //{
-    with DragCallbacks,CollisionCallbacks  {
+    with
+        DragCallbacks,
+        CollisionCallbacks,
+        HasGameReference<EndlessRunnerGame> {
     //with HasGameReference<EndlessRunnerGame> {
   PlayerComponent()
       : super(
@@ -39,7 +42,12 @@ class PlayerComponent extends //SpriteComponent //{
       ) {
     super.onCollisionStart(intersectionPoints, other);
 
-    if (other is EnemyComponent) {
+    if (other is EnemyComponent && !game.isGameOver) {
+
+      game.isGameOver = true;
+
+      game.pauseEngine();
+
       print("GAME OVER");
     }
   }

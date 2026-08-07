@@ -8,6 +8,8 @@ import 'world/game_world.dart';
 class EndlessRunnerGame extends FlameGame //{
     with HasCollisionDetection {
 
+  bool isGameOver = false;
+
   @override
   Color backgroundColor() => const Color(0xFF000000);
 
