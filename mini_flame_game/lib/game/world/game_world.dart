@@ -4,6 +4,7 @@ import '../components/background_component.dart';
 import '../components/player_component.dart';
 import '../components/enemy_component.dart';
 import '../managers/enemy_spawn_manager.dart';
+import '../components/score_text_component.dart';
 
 class GameWorld extends World {
   @override
@@ -24,6 +25,7 @@ class GameWorld extends World {
     ); */
 
     add(EnemySpawnManager());
+    add(ScoreTextComponent());
 
   }
 }
