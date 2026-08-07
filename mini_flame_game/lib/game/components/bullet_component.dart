@@ -5,6 +5,7 @@ import 'package:flame/collisions.dart';
 
 import '../endless_runner_game.dart';
 import 'enemy_component.dart';
+import 'explosion_component.dart';
 
 class BulletComponent extends RectangleComponent //{
     with CollisionCallbacks, HasGameReference<EndlessRunnerGame> {
@@ -44,6 +45,12 @@ class BulletComponent extends RectangleComponent //{
     super.onCollisionStart(intersectionPoints, other);
 
     if (other is EnemyComponent) {
+      parent?.add(
+        ExplosionComponent(
+          position: other.position.clone(),
+        ),
+      );
+
       other.removeFromParent();
       removeFromParent();
 
