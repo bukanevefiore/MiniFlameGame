@@ -7,15 +7,17 @@ import '../managers/enemy_spawn_manager.dart';
 import '../components/score_text_component.dart';
 
 class GameWorld extends World {
+
+  late PlayerComponent player;
+
   @override
   Future<void> onLoad() async {
     await super.onLoad();
 
     add(BackgroundComponent());
 
-    add(PlayerComponent());
-
-    print("PLAYER ADDED");
+    player = PlayerComponent();
+    add(player);
 
 
    /* add(
@@ -27,5 +29,13 @@ class GameWorld extends World {
     add(EnemySpawnManager());
     add(ScoreTextComponent());
 
+  }
+
+  void resetWorld() {
+    player.position = Vector2(180, 560);
+
+    children.whereType<EnemyComponent>().forEach((enemy) {
+      enemy.removeFromParent();
+    });
   }
 }

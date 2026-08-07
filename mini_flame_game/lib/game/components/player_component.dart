@@ -50,6 +50,10 @@ class PlayerComponent extends //SpriteComponent //{
 
       game.isGameOver = true;
 
+     /* if (game.score > game.gameManager.bestScore) {
+        game.gameManager.bestScore = game.score;
+      } */
+
       //game.world.add(GameOverTextComponent(),); hata oluşturduğu için beklemeye alındı
 
       game.pauseEngine();

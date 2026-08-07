@@ -55,8 +55,10 @@ class BulletComponent extends RectangleComponent //{
       removeFromParent();
 
       game.score++;
-
       debugPrint("Score: ${game.score}");
+
+      //game.gameManager.addScore();
+      //debugPrint("Score: ${game.gameManager.score}");
     }
   }
 
