@@ -1,12 +1,15 @@
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flutter/material.dart';
+import 'package:flame/collisions.dart';
+
+import 'enemy_component.dart';
 
 import '../endless_runner_game.dart';
 
 class PlayerComponent extends //SpriteComponent //{
                               RectangleComponent //{
-    with DragCallbacks {
+    with DragCallbacks,CollisionCallbacks  {
     //with HasGameReference<EndlessRunnerGame> {
   PlayerComponent()
       : super(
@@ -20,6 +23,25 @@ class PlayerComponent extends //SpriteComponent //{
   @override
   void onDragUpdate(DragUpdateEvent event) {
     position += event.localDelta;
+  }
+
+  @override
+  Future<void> onLoad() async {
+    await super.onLoad();
+
+    add(RectangleHitbox());
+  }
+
+  @override
+  void onCollisionStart(
+      Set<Vector2> intersectionPoints,
+      PositionComponent other,
+      ) {
+    super.onCollisionStart(intersectionPoints, other);
+
+    if (other is EnemyComponent) {
+      print("GAME OVER");
+    }
   }
 
  /* PlayerComponent();

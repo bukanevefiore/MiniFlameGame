@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'config/game_config.dart';
 import 'world/game_world.dart';
 
-class EndlessRunnerGame extends FlameGame {
+class EndlessRunnerGame extends FlameGame //{
+    with HasCollisionDetection {
+
   @override
   Color backgroundColor() => const Color(0xFF000000);
 

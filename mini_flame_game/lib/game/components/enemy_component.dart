@@ -1,7 +1,10 @@
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
+import 'package:flame/collisions.dart';
 
-class EnemyComponent extends RectangleComponent {
+class EnemyComponent extends RectangleComponent //{
+    with CollisionCallbacks {
+
   EnemyComponent({
     required Vector2 position,
   }) : super(
@@ -17,4 +20,12 @@ class EnemyComponent extends RectangleComponent {
 
     position.y += 200 * dt;
   }
+
+  @override
+  Future<void> onLoad() async {
+    await super.onLoad();
+
+    add(RectangleHitbox());
+  }
+
 }
