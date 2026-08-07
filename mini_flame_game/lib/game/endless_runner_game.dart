@@ -18,6 +18,8 @@ class EndlessRunnerGame extends FlameGame //{
   Future<void> onLoad() async {
     await super.onLoad();
 
+    print("ON LOAD");
+
     pauseEngine();
 
     final gameWorld = GameWorld();
@@ -44,7 +46,14 @@ class EndlessRunnerGame extends FlameGame //{
 
     world.removeAll(world.children);
 
-    world.add(GameWorld());
+    //world.add(GameWorld());
+  }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+
+    //print("GAME RUNNING");
   }
 
 }

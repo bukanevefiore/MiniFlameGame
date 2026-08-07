@@ -43,6 +43,7 @@ void main() {
 
                   ElevatedButton(
                     onPressed: () {
+                      print("START BUTTON");
                       game.overlays.remove("MainMenu");
                       game.resumeEngine();
                     },
@@ -53,7 +54,48 @@ void main() {
             ),
           );
         },
+        'GameOver': (context, EndlessRunnerGame game) {
+          return Container(
+            color: Colors.black54,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+
+                  const Text(
+                    "GAME OVER",
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 42,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  Text(
+                    "Score: ${game.score}",
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 28,
+                    ),
+                  ),
+
+                  const SizedBox(height: 40),
+
+                  ElevatedButton(
+                    onPressed: () {
+                      //game.restartGame();
+                    },
+                    child: const Text("RESTART"),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
       },
+
     ),
   );
 }

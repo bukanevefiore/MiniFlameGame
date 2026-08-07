@@ -54,8 +54,8 @@ class PlayerComponent extends //SpriteComponent //{
 
       game.pauseEngine();
 
-      print("GAME OVER");
       game.overlays.add('GameOver');
+      print("GAME OVER");
     }
   }
 
