@@ -6,11 +6,9 @@ import 'game/endless_runner_game.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final game = EndlessRunnerGame();
-
   runApp(
     GameWidget(
-      game: game,
+      game: EndlessRunnerGame(),
     ),
   );
 }
