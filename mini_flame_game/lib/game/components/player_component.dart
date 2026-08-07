@@ -6,6 +6,7 @@ import 'package:flame/collisions.dart';
 import 'enemy_component.dart';
 import '../endless_runner_game.dart';
 import 'bullet_component.dart';
+import 'game_over_text_component.dart';
 
 class PlayerComponent extends //SpriteComponent //{
                               RectangleComponent //{
@@ -48,6 +49,8 @@ class PlayerComponent extends //SpriteComponent //{
     if (other is EnemyComponent && !game.isGameOver) {
 
       game.isGameOver = true;
+
+      //game.world.add(GameOverTextComponent(),); hata oluşturduğu için beklemeye alındı
 
       game.pauseEngine();
 
