@@ -11,5 +11,7 @@ class GameWorld extends World {
     add(BackgroundComponent());
 
     add(PlayerComponent());
+
+    print("PLAYER ADDED");
   }
 }
