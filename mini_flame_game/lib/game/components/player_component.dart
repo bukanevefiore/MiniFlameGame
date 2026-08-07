@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flame/collisions.dart';
 
 import 'enemy_component.dart';
-
 import '../endless_runner_game.dart';
+import 'bullet_component.dart';
 
 class PlayerComponent extends //SpriteComponent //{
                               RectangleComponent //{
@@ -14,6 +14,9 @@ class PlayerComponent extends //SpriteComponent //{
         CollisionCallbacks,
         HasGameReference<EndlessRunnerGame> {
     //with HasGameReference<EndlessRunnerGame> {
+
+  double _shootTimer = 0;
+
   PlayerComponent()
       : super(
     position: Vector2(180, 560),
@@ -49,6 +52,26 @@ class PlayerComponent extends //SpriteComponent //{
       game.pauseEngine();
 
       print("GAME OVER");
+    }
+  }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+
+    _shootTimer += dt;
+
+    if (_shootTimer >= 0.35) {
+      _shootTimer = 0;
+
+      parent?.add(
+        BulletComponent(
+          position: Vector2(
+            position.x,
+            position.y - 35,
+          ),
+        ),
+      );
     }
   }
 
