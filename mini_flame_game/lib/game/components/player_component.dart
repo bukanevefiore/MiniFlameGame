@@ -49,10 +49,14 @@ class PlayerComponent extends //SpriteComponent //{
     if (other is EnemyComponent && !game.isGameOver) {
 
       game.isGameOver = true;
+      debugPrint("CURRENT SCORE: ${game.score}");
+      debugPrint("CURRENT BEST SCORE: ${game.bestScore}");
 
-     /* if (game.score > game.gameManager.bestScore) {
-        game.gameManager.bestScore = game.score;
-      } */
+      if (game.score > game.bestScore) {
+        game.bestScore = game.score;
+        debugPrint("BEST SCORE SAVED::: ${game.bestScore}");
+        game.saveBestScore();
+      }
 
       //game.world.add(GameOverTextComponent(),); hata oluşturduğu için beklemeye alındı
 

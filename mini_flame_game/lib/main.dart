@@ -34,9 +34,9 @@ void main() {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          const Text(
-                            "Best Score: 0",
-                            style: TextStyle(
+                          Text(
+                            "Best Score: ${game.bestScore}",
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 24,
                             ),
